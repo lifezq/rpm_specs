@@ -1,10 +1,9 @@
-%define         app_name      php
 %define         app_version   7.1.0RC1
-%define         app_prefix    /opt/%{app_name}
+%define         app_prefix    /opt/php
 %define         app_user      nobody
 %define         app_group     nobody
 
-Name:           %{app_name}
+Name:           php
 Version:        %{app_version}
 Release:        1%{?dist}
 Vendor:         Ryan
