@@ -1,6 +1,6 @@
-%define         resty_prefix    /opt/ngx-openresty/
-%define         resty_user      nobody
-%define         resty_group     nobody
+%define         app_prefix    /opt/ngx-openresty
+%define         app_user      nobody
+%define         app_group     nobody
 
 Name:           ngx-openresty
 Version:        x.y.z 
@@ -27,7 +27,7 @@ OpenResty is a full-fledged web application server by bundling the standard Ngin
 
 %build
 
-./configure --prefix=%{resty_prefix} \
+./configure --prefix=%{app_prefix} \
             --with-http_postgres_module \
             --with-pcre-jit \
             --with-ipv6 \
@@ -49,16 +49,16 @@ rm -rf $RPM_BUILD_ROOT
 
 cur_dir=`pwd`
 
-cd $RPM_BUILD_ROOT%{resty_prefix}/nginx/ && \
+cd $RPM_BUILD_ROOT%{app_prefix}/nginx/ && \
     mkdir client_body_temp fastcgi_temp proxy_temp
 
 cd $RPM_BUILD_ROOT && (find . -type f | sed -e 's|^./|/|g' > $cur_dir/%{name}.manifest)
 cd $RPM_BUILD_ROOT && (find . -type l | sed -e 's|^./|/|g' >> $cur_dir/%{name}.manifest)
 
-echo %{resty_prefix}/nginx/logs >> $cur_dir/%{name}.manifest
-echo %{resty_prefix}/nginx/client_body_temp >> $cur_dir/%{name}.manifest
-echo %{resty_prefix}/nginx/fastcgi_temp >> $cur_dir/%{name}.manifest
-echo %{resty_prefix}/nginx/proxy_temp >> $cur_dir/%{name}.manifest
+echo %{app_prefix}/nginx/logs >> $cur_dir/%{name}.manifest
+echo %{app_prefix}/nginx/client_body_temp >> $cur_dir/%{name}.manifest
+echo %{app_prefix}/nginx/fastcgi_temp >> $cur_dir/%{name}.manifest
+echo %{app_prefix}/nginx/proxy_temp >> $cur_dir/%{name}.manifest
 
 %pre 
 
@@ -73,12 +73,12 @@ echo %{resty_prefix}/nginx/proxy_temp >> $cur_dir/%{name}.manifest
 rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.manifest
-%defattr(-,%{resty_user},%{resty_group},-)
+%defattr(-,%{app_user},%{app_group},-)
 %doc
-%dir %{resty_prefix}
+%dir %{app_prefix}
 
-%config(noreplace) %{resty_prefix}/nginx/conf/*.conf
+%config(noreplace) %{app_prefix}/nginx/conf/*.conf
 
-%{resty_prefix}
+%{app_prefix}
 
 %changelog
