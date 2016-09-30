@@ -10,8 +10,8 @@ Vendor:         Ryan
 Summary:        PHP is an HTML-embedded scripting language.
 
 License:        BSD 
-Group: Applications
-URL:           http://www.php.net/ 
+Group:          Applications
+URL:            http://www.php.net/ 
 Source0:        %{name}-%{version}.tar.gz 
 
 BuildRequires:	gcc >= 3.0, openssl-devel, pcre-devel, readline-devel,libcurl-devel,libpng-devel,libxml2-devel,glibc-devel,freetype-devel,libstdc++-devel,xz-devel,zlib-devel,keyutils-libs-devel,krb5-devel,libcom_err-devel,libselinux-devel,libsepol-devel,libverto-devel,ncurses-devel,libjpeg-turbo-devel,postgresql-devel
@@ -36,15 +36,8 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
 make %{?_smp_mflags}
 
 
-%install
-rm -rf $RPM_BUILD_ROOT
-%make_install
-
-cur_dir=`pwd`
-
-cd $RPM_BUILD_ROOT && (find . -type f | sed -e 's|^./|/|g' > $cur_dir/%{name}.manifest)
-cd $RPM_BUILD_ROOT && (find . -type l | sed -e 's|^./|/|g' >> $cur_dir/%{name}.manifest)
-
+%install 
+%make_install 
 
 %pre 
 
@@ -54,18 +47,11 @@ cd $RPM_BUILD_ROOT && (find . -type l | sed -e 's|^./|/|g' >> $cur_dir/%{name}.m
 
 %postun
 
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files -f %{name}.manifest
+%files
 %defattr(-,%{app_user},%{app_group},-)
 %doc
-%dir %{app_prefix}
-
-%config(noreplace) %{app_prefix}/etc/php-fpm.conf
-%config(noreplace) %{app_prefix}/etc/php-fpm.d/www.conf
-
-%{app_prefix}
 
 %changelog
