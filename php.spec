@@ -1,5 +1,5 @@
-%define         app_version   7.1.0RC1
-%define         app_prefix    /opt/php
+%define         app_version   7.1.3
+%define         app_prefix    /opt/php7
 %define         app_user      nobody
 %define         app_group     nobody
 
@@ -7,10 +7,10 @@ Name:           php
 Version:        %{app_version}
 Release:        1%{?dist}
 Vendor:         Ryan
-Summary:        PHP is an HTML-embedded scripting language.
+Summary:        PHP: Hypertext Preprocessor
 
 License:        BSD 
-Group:          Applications
+Group:          Development/Languages
 URL:            http://www.php.net/ 
 Source0:        %{name}-%{version}.tar.gz 
 
@@ -31,7 +31,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
 
 %build
 
-./configure   --prefix=%{app_prefix} --with-config-file-path=%{app_prefix}/etc  --with-config-file-scan-dir  --enable-fpm  --enable-opcache  --enable-sysvsem  --enable-sockets  --enable-pcntl  --enable-mbstring  --enable-mysqlnd  --enable-shmop  --enable-zip  --with-mysqli  --with-freetype-dir  --with-jpeg-dir  --with-png-dir  --with-mcrypt  --with-zlib  --with-curl  --with-pcre-dir  --with-pdo-mysql  --with-gd --enable-gd-native-ttf  --enable-gd-jis-conv  --with-gettext --with-pear --with-libxml-dir  --with-readline 
+./configure   --prefix=%{app_prefix} --with-config-file-path=%{app_prefix}/etc  --with-config-file-scan-dir  --enable-fpm  --enable-opcache  --enable-sysvsem  --enable-sockets  --enable-pcntl  --enable-mbstring  --enable-mysqlnd  --enable-shmop  --enable-zip  --with-mysqli  --with-freetype-dir  --with-jpeg-dir  --with-png-dir  --with-mcrypt  --with-zlib  --with-curl  --with-pcre-dir  --with-pdo-mysql  --with-gd --enable-gd-native-ttf  --enable-gd-jis-conv  --with-gettext --with-pear --with-libxml-dir  --with-readline --with-openssl
 
 make %{?_smp_mflags}
 
