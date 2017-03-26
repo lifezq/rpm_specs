@@ -22,7 +22,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
 %description
         PHP is an HTML-embedded scripting language. Much of its syntax is
         borrowed from C, Java and Perl with a couple of unique PHP-specific
-        features thrown in. The goal of the language is to allow web
+       features thrown in. The goal of the language is to allow web
         developers to write dynamically generated pages quickly.
 
 %prep
@@ -34,10 +34,14 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
 ./configure   --prefix=%{app_prefix} --with-config-file-path=%{app_prefix}/etc  --with-config-file-scan-dir  --enable-fpm  --enable-opcache  --enable-sysvsem  --enable-sockets  --enable-pcntl  --enable-mbstring  --enable-mysqlnd  --enable-shmop  --enable-zip  --with-mysqli  --with-freetype-dir  --with-jpeg-dir  --with-png-dir  --with-mcrypt  --with-zlib  --with-curl  --with-pcre-dir  --with-pdo-mysql  --with-gd --enable-gd-native-ttf  --enable-gd-jis-conv  --with-gettext --with-pear --with-libxml-dir  --with-readline --with-openssl
 
 make %{?_smp_mflags}
+#make %{?_smp_mflags} PREFIX=$RPM_BUILD_ROOT%{app_prefix}
 
 
 %install 
+
 %make_install 
+#make install INSTALL_ROOT=$RPM_BUILD_ROOT
+
 
 %pre 
 
@@ -53,5 +57,12 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,%{app_user},%{app_group},-)
 %doc
+
+%{app_prefix}
+/.channels
+/.depdb
+/.depdblock
+/.filemap
+/.lock
 
 %changelog
