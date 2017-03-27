@@ -40,10 +40,8 @@ make %{?_smp_mflags}
 %install 
 
 %make_install 
-#make install INSTALL_ROOT=%{buildroot}
 #make install INSTALL_ROOT=$RPM_BUILD_ROOT
 
-[ -d /etc/php-fpm.d  ] || %{__install} -d -m 0644 %{_sysconfdir}/php-fpm.d
 %{__install} -p -m 0644 %{buildroot}%{app_prefix}/etc/php-fpm.conf.default %{buildroot}%{app_prefix}/etc/php-fpm.conf
 %{__install} -p -m 0644 %{buildroot}%{app_prefix}/etc/php-fpm.d/www.conf.default %{buildroot}%{app_prefix}/etc/php-fpm.d/www.conf
 sed -i 's/^user\ =\ nobody/user\ =\ %{app_user}/g'  %{buildroot}%{app_prefix}/etc/php-fpm.d/www.conf 2>&1 >/dev/null &
