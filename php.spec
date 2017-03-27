@@ -1,7 +1,7 @@
 %define         app_version   7.1.3
 %define         app_prefix    /opt/php7
-%define         app_user      nobody
-%define         app_group     nobody
+%define         app_user      www
+%define         app_group     www
 
 Name:           php
 Version:        %{app_version}
@@ -34,25 +34,40 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
 ./configure   --prefix=%{app_prefix} --with-config-file-path=%{app_prefix}/etc  --with-config-file-scan-dir  --enable-fpm  --enable-opcache  --enable-sysvsem  --enable-sockets  --enable-pcntl  --enable-mbstring  --enable-mysqlnd  --enable-shmop  --enable-zip  --with-mysqli  --with-freetype-dir  --with-jpeg-dir  --with-png-dir  --with-mcrypt  --with-zlib  --with-curl  --with-pcre-dir  --with-pdo-mysql  --with-gd --enable-gd-native-ttf  --enable-gd-jis-conv  --with-gettext --with-pear --with-libxml-dir  --with-readline --with-openssl
 
 make %{?_smp_mflags}
-#make %{?_smp_mflags} PREFIX=$RPM_BUILD_ROOT%{app_prefix}
+#make %{?_smp_mflags} PREFIX=%{buildroot}%{app_prefix}
 
 
 %install 
 
 %make_install 
+#make install INSTALL_ROOT=%{buildroot}
 #make install INSTALL_ROOT=$RPM_BUILD_ROOT
 
+[ -d /etc/php-fpm.d  ] || %{__install} -d -m 0644 %{_sysconfdir}/php-fpm.d
+%{__install} -p -m 0644 %{buildroot}%{app_prefix}/etc/php-fpm.conf.default %{buildroot}%{app_prefix}/etc/php-fpm.conf
+%{__install} -p -m 0644 %{buildroot}%{app_prefix}/etc/php-fpm.d/www.conf.default %{buildroot}%{app_prefix}/etc/php-fpm.d/www.conf
+sed -i 's/^user\ =\ nobody/user\ =\ %{app_user}/g'  %{buildroot}%{app_prefix}/etc/php-fpm.d/www.conf 2>&1 >/dev/null &
+sed -i 's/^group\ =\ nobody/group\ =\ %{app_group}/g'  %{buildroot}%{app_prefix}/etc/php-fpm.d/www.conf 2>&1 >/dev/null &
 
-%pre 
+%pre
+getent group %{app_group} 2>&1 >/dev/null || groupadd %{app_group}
+getent passwd %{app_user} 2>&1 >/dev/null || useradd -c %{app_user} -g %{app_group} -M -s /usr/sbin/nologin %{app_user}
 
-%post
+%post 
 
-%preun
+killall php-fpm 2>&1 >/dev/null &
+sleep 1
+%{app_prefix}/sbin/php-fpm -D 2>&1 >/dev/null &
+
+%preun 
+if [ $1 -eq 0 ]; then 
+    killall php-fpm 2>&1 >/dev/null &
+fi
 
 %postun
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+%{__rm} -rf %{buildroot}
 
 %files
 %defattr(-,%{app_user},%{app_group},-)
@@ -64,5 +79,10 @@ rm -rf $RPM_BUILD_ROOT
 /.depdblock
 /.filemap
 /.lock
+
+
+%config %{app_prefix}/etc/pear.conf
+%config(noreplace) %{app_prefix}/etc/php-fpm.conf
+%config(noreplace) %{app_prefix}/etc/php-fpm.d/www.conf 
 
 %changelog
