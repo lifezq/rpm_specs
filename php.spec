@@ -53,8 +53,7 @@ getent passwd %{app_user} 2>&1 >/dev/null || useradd -c %{app_user} -g %{app_gro
 
 %post 
 
-killall php-fpm 2>&1 >/dev/null &
-sleep 1
+killall php-fpm 2>&1 >/dev/null 
 %{app_prefix}/sbin/php-fpm -D 2>&1 >/dev/null &
 
 %preun 
