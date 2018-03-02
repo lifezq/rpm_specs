@@ -45,3 +45,6 @@ yum install -y tcpdump
 # pci
 # yum install -y lspci
 # usage: lspci -vvv | grep Ethernet
+
+# /etc/profile
+# export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
