@@ -12,8 +12,8 @@
 
 [ryan-repo]
 name=Rayn-$releasever - Base
-#mirrorlist=http://lifezq.com/?release=$releasever&arch=$basearch&repo=os&infra=$infra
-baseurl=http://lifezq.com/yum_repo/$releasever/os/$basearch/
+#mirrorlist=http://yixst.com/?release=$releasever&arch=$basearch&repo=os&infra=$infra
+baseurl=http://yixst.com/yum_repo/$releasever/os/$basearch/
 gpgcheck=0
 gpgkey=
 priority=1
