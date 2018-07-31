@@ -5,7 +5,7 @@
 #
 
 # Yum repo
-yum install -y epel-release gcc gcc-c++ make cpp glibc-headers kernel-headers automake autoconf openssl-devel pcre-devel readline-devel libcurl-devel wget net-tools
+yum install -y epel-release gcc gcc-c++ make cpp glibc-headers kernel-headers automake autoconf openssl-devel pcre-devel readline-devel libcurl-devel wget net-tools rpm-build rpmdevtools
 wget https://raw.githubusercontent.com/lifezq/rpm_specs/master/repo/ryan.repo -O /etc/yum.repos.d/ryan.repo
 yum clean all && yum makecache fast
 
