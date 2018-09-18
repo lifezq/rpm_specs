@@ -7,7 +7,19 @@
 # Yum repo
 yum install -y epel-release gcc gcc-c++ make cpp glibc-headers kernel-headers automake autoconf openssl-devel pcre-devel readline-devel libcurl-devel wget net-tools rpm-build rpmdevtools
 wget https://raw.githubusercontent.com/lifezq/rpm_specs/master/repo/ryan.repo -O /etc/yum.repos.d/ryan.repo
+# chrome
+echo '[google-chrome]
+name=google-chrome
+baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64
+enabled=1
+gpgcheck=1
+gpgkey=https://dl.google.com/linux/linux_signing_key.pub' > /etc/yum.repos.d/google-chrome.repo
+
 yum clean all && yum makecache fast
+
+
+
+
 
 # Desktop
 # yum groupinstall "GNOME Desktop" or yum groups mark-install "GNOME Desktop" "Development Tools"
