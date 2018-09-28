@@ -62,3 +62,9 @@ yum install -y tcpdump
 # export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
 # echo "192.30.253.112 github.com\n151.101.13.194 github.global.ssl.fastly.net\n52.216.65.8 github-cloud.s3.amazonaws.com" >> /etc/hosts
+
+
+# npm config set registry http://registry.npm.taobao.org/
+# npm config set registry https://registry.npmjs.org/
+
+
