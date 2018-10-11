@@ -17,7 +17,8 @@ gpgkey=https://dl.google.com/linux/linux_signing_key.pub' > /etc/yum.repos.d/goo
 
 yum clean all && yum makecache fast
 
-
+echo "fs.inotify.max_user_watches=524288" >> /etc/sysctl.conf
+sysctl -p
 
 
 
