@@ -54,6 +54,7 @@ yum install -y hdparm
 # net profile
 yum install -y tcpdump
 # usage: tcpdump -i enp5s0 -vv host domain
+# usage: tcpdump -i any -Xnns 0 port 8281   
 
 # pci
 # yum install -y lspci
