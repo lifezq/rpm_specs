@@ -70,3 +70,6 @@ yum install -y tcpdump
 # npm config set registry https://registry.npmjs.org/
 
 
+# TZ='Asia/Shanghai'; export TZ
+
+
