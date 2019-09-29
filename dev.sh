@@ -63,6 +63,7 @@ yum install -y tcpdump
 # /etc/profile
 # export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
+## 去这上面找个ttl小的 http://tool.chinaz.com/dns
 # echo -e "192.30.253.112 github.com\n151.101.13.194 github.global.ssl.fastly.net\n52.216.65.8 github-cloud.s3.amazonaws.com" >> /etc/hosts
 
 
