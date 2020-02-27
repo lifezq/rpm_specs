@@ -73,4 +73,7 @@ yum install -y tcpdump
 
 # TZ='Asia/Shanghai'; export TZ
 
+## GO ENV
+GO111MODULE=on
+GOPROXY=https://goproxy.cn
 
