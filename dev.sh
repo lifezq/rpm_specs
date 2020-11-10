@@ -79,3 +79,6 @@ GOPROXY=https://goproxy.cn
 # go静态编译
 # CGO_ENABLED=0 go build --ldflags "-extldflags -static" .
 
+
+# protoc
+## protoc -I/path1/common -I /path2/proto --go_out=.  --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative  *.proto
