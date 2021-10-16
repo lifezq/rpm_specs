@@ -75,7 +75,7 @@ yum install -y tcpdump
 
 ## GO ENV
 GO111MODULE=on
-GOPROXY=https://goproxy.cn
+GOPROXY=https://goproxy.cn,direct
 # go静态编译
 # CGO_ENABLED=0 go build --ldflags "-extldflags -static" .
 
