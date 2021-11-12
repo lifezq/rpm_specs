@@ -82,3 +82,6 @@ GOPROXY=https://goproxy.cn,direct
 
 # protoc
 ## protoc -I/path1/common -I /path2/proto --go_out=.  --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative  *.proto
+
+# win10 禁用Hyper-V, 以管理员身份运行cmd输入
+## bcdedit /set hypervisorlaunchtype off
