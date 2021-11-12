@@ -85,3 +85,5 @@ GOPROXY=https://goproxy.cn,direct
 
 # win10 禁用Hyper-V, 以管理员身份运行cmd输入
 ## bcdedit /set hypervisorlaunchtype off
+# win10 恢复Hyper-V
+## bcdedit /set hypervisorlaunchtype auto
