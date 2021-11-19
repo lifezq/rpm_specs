@@ -87,3 +87,7 @@ GOPROXY=https://goproxy.cn,direct
 ## bcdedit /set hypervisorlaunchtype off
 # win10 恢复Hyper-V
 ## bcdedit /set hypervisorlaunchtype auto
+
+# git ctrl/lf
+git config --global core.autocrlf true
+git config --global core.safecrlf true
