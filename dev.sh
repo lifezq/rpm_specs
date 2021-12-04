@@ -89,5 +89,5 @@ GOPROXY=https://goproxy.cn,direct
 ## bcdedit /set hypervisorlaunchtype auto
 
 # git ctrl/lf
-git config --global core.autocrlf input
+git config --global core.autocrlf true
 git config --global core.safecrlf true
