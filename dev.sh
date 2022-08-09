@@ -91,6 +91,7 @@ GOPROXY=https://goproxy.cn,direct
 # git ctrl/lf
 git config --global core.autocrlf true  # 如果编辑器已经是LF，就不需要这个转换。为input/false即可
 git config --global core.safecrlf true
+git config --system core.longpaths true
 
 # 更换pip源 修改 ~/.pip/pip.conf 
 ```
