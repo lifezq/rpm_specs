@@ -89,8 +89,18 @@ GOPROXY=https://goproxy.cn,direct
 ## bcdedit /set hypervisorlaunchtype auto
 
 # git ctrl/lf
+# 1. core.autocrlf  
+# 1.1 为true时，提交时转换为LF，检出时转换为CRLF
+# 1.2 为input时，提交时转换为LF，检出时不转换
+# 1.3 为false时，提交检出均不转换
 git config --global core.autocrlf true  # 如果编辑器已经是LF，就不需要这个转换。为input/false即可
+# 2. core.safecrlf
+# 2.1 为true时，拒绝提交包含混合换行符的文件 （一般设置为true）
+# 2.2 为false时，允许提交包含混合换行符的文件
+# 2.3 为warn时，提交包含混合换行符的文件时给出警告
 git config --global core.safecrlf true
+# 3. core.longpaths 
+# 3.1 为true时，让 git 支持长文件名
 git config --system core.longpaths true
 
 # 更换pip源 修改 ~/.pip/pip.conf 
