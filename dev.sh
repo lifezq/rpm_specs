@@ -110,3 +110,6 @@ index-url = https://pypi.tuna.tsinghua.edu.cn/simple/
 [install]
 trusted-host = pypi.tuna.tsinghua.edu.cn
 ```
+
+# go pkg update
+# https://proxy.golang.org/github.com/lifezq/goutils/@v/v1.0.1.info
