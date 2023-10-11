@@ -9,3 +9,6 @@ docker run -itd --name redis -p 6379:6379 redis:5.0.14-alpine --requirepass 1234
 
 ## mariadb
 docker run -itd --name mariadb -p 3306:3306 mariadb:latest
+
+## mysql
+docker run -p 3306:3306 --name mysql --restart=always --privileged=true -v /d/ProgramData/mysql/log:/var/log/mysql -v /d/ProgramData/mysql/data:/var/lib/mysql -v /d/ProgramData/mysql/conf:/etc/mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7.43
