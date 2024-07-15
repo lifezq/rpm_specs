@@ -88,6 +88,8 @@ GOPROXY=https://goproxy.cn,direct
 # win10 恢复Hyper-V
 ## bcdedit /set hypervisorlaunchtype auto
 
+# git 
+# export GIT_TERMINAL_PROMPT=1
 # git ctrl/lf
 # 1. core.autocrlf  
 # 1.1 为true时，提交时转换为LF，检出时转换为CRLF
