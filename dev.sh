@@ -115,3 +115,8 @@ trusted-host = pypi.tuna.tsinghua.edu.cn
 
 # go pkg update
 # https://proxy.golang.org/github.com/lifezq/goutils/@v/v1.0.1.info
+
+# 全局代理
+export ALL_PROXY="http://127.0.0.1:7897"
+export HTTP_PROXY="http://127.0.0.1:7897"
+export HTTPS_PROXY="http://127.0.0.1:7897"
