@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    
+    <!-- 本地仓库路径 -->
+    <localRepository>${user.home}/.m2/repository</localRepository>
+    
+    <!-- 是否使用插件组织 -->
+    <usePluginRegistry>false</usePluginRegistry>
+    
+    <!-- 是否离线模式 -->
+    <offline>false</offline>
+    
+    <!-- 服务器认证配置 -->
+    <servers>
+        <!-- 示例服务器配置 -->
+        <server>
+            <id>central</id>
+            <username>maven_user</username>
+            <password>maven_password</password>
+        </server>
+    </servers>
+    
+    <!-- 镜像配置 -->
+    <mirrors>
+        <!-- 阿里云Maven镜像 -->
+        <mirror>
+            <id>aliyun-maven</id>
+            <name>Aliyun Maven Mirror</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <mirrorOf>central</mirrorOf>
+        </mirror>
+    </mirrors>
+    
+    <!-- 代理配置 -->
+    <proxies>
+        <!-- 示例代理配置 -->
+        <!--
+        <proxy>
+            <id>optional</id>
+            <active>true</active>
+            <protocol>http</protocol>
+            <host>proxy.host.com</host>
+            <port>8080</port>
+            <nonProxyHosts>localhost|127.0.0.1</nonProxyHosts>
+        </proxy>
+        -->
+    </proxies>
+    
+    <!-- 配置文件激活 -->
+    <activeProfiles>
+        <activeProfile>default</activeProfile>
+    </activeProfiles>
+    
+    <!-- 配置文件 -->
+    <profiles>
+        <profile>
+            <id>default</id>
+            <repositories>
+                <repository>
+                    <id>central</id>
+                    <name>Maven Central</name>
+                    <url>https://repo.maven.apache.org/maven2</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>aliyun</id>
+                    <name>Aliyun Maven Repository</name>
+                    <url>https://maven.aliyun.com/repository/public</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+            
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>central</id>
+                    <name>Maven Central</name>
+                    <url>https://repo.maven.apache.org/maven2</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>aliyun</id>
+                    <name>Aliyun Maven Repository</name>
+                    <url>https://maven.aliyun.com/repository/public</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+            
+            <properties>
+                <!-- 编码设置 -->
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+                
+                <!-- 编译器设置 -->
+                <maven.compiler.source>17</maven.compiler.source>
+                <maven.compiler.target>17</maven.compiler.target>
+                
+                <!-- 跳过测试 -->
+                <maven.test.skip>false</maven.test.skip>
+            </properties>
+        </profile>
+        
+        <!-- 开发环境配置 -->
+        <profile>
+            <id>dev</id>
+            <properties>
+                <env>dev</env>
+            </properties>
+        </profile>
+        
+        <!-- 测试环境配置 -->
+        <profile>
+            <id>test</id>
+            <properties>
+                <env>test</env>
+            </properties>
+        </profile>
+        
+        <!-- 生产环境配置 -->
+        <profile>
+            <id>prod</id>
+            <properties>
+                <env>prod</env>
+            </properties>
+        </profile>
+    </profiles>
+</settings>
