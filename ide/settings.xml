@@ -24,12 +24,44 @@
     
     <!-- 镜像配置 -->
     <mirrors>
-        <!-- 阿里云Maven镜像 -->
+        <!-- 1. 阿里云中央仓库（首选，速度最快） -->
         <mirror>
-            <id>aliyun-maven</id>
-            <name>Aliyun Maven Mirror</name>
-            <url>https://maven.aliyun.com/repository/public</url>
+            <id>aliyunmaven</id>
             <mirrorOf>central</mirrorOf>
+            <name>阿里云中央仓库</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </mirror>
+
+        <!-- 2. 华为云镜像 -->
+        <mirror>
+            <id>huaweicloud</id>
+            <mirrorOf>central</mirrorOf>
+            <name>华为云中央仓库</name>
+            <url>https://repo.huaweicloud.com/repository/maven/</url>
+        </mirror>
+
+        <!-- 3. 腾讯云镜像 -->
+        <mirror>
+            <id>tencentmaven</id>
+            <mirrorOf>central</mirrorOf>
+            <name>腾讯云中央仓库</name>
+            <url>https://mirrors.cloud.tencent.com/nexus/repository/maven-public/</url>
+        </mirror>
+
+        <!-- 4. 清华大学镜像 -->
+        <mirror>
+            <id>tsinghua</id>
+            <mirrorOf>central</mirrorOf>
+            <name>清华大学中央仓库</name>
+            <url>https://maven.tsinghua.edu.cn/repository/public/</url>
+        </mirror>
+
+        <!-- 5. 中央仓库备用（国外源，仅作为兜底） -->
+        <mirror>
+            <id>maven-central</id>
+            <mirrorOf>central</mirrorOf>
+            <name>Maven Central Repository</name>
+            <url>https://repo1.maven.org/maven2</url>
         </mirror>
     </mirrors>
     
@@ -145,4 +177,5 @@
             </properties>
         </profile>
     </profiles>
+
 </settings>
